@@ -1,0 +1,40 @@
+// Lab1.ATL.idl : IDL source for Lab1.ATL
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Lab1ATL.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(bb8360f9-2583-4c0e-922b-ca0c4e391fe2),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IMath : IDispatch
+{
+	[id(1)] HRESULT Add([in] LONG a, [in] LONG b, [out, retval] LONG* c);
+	[id(2)] HRESULT Substract([in] LONG a, [in] LONG b, [out, retval] LONG* c);
+	[id(3)] HRESULT Multiply([in] LONG a, [in] LONG b, [out, retval] LONG* c);
+	[id(4)] HRESULT Divide([in] LONG a, [in] LONG b, [out, retval] LONG* c);
+};
+[
+	uuid(7b7fb63a-b818-4feb-ab1c-58db886aa921),
+	version(1.0),
+]
+library Lab1ATLLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(b335b87a-cae8-4ccd-8fc0-8e37ebe2e04a)
+	]
+	coclass Math
+	{
+		[default] interface IMath;
+	};
+};
+
+import "shobjidl.idl";
